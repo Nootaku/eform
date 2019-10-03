@@ -1,0 +1,73 @@
+/* CSS FOR CLICKADO - DIGICLOUD WEBAPP */
+
+/* 1 - General */
+/* Webfont: Lato-Light */
+@font-face {
+    font-family: 'LatoWebLight';
+    src: url('fonts/Lato-Light.eot'); /* IE9 Compat Modes */
+    src: url('fonts/Lato-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('fonts/Lato-Light.woff2') format('woff2'), /* Modern Browsers */
+         url('fonts/Lato-Light.woff') format('woff'), /* Modern Browsers */
+         url('fonts/Lato-Light.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+/* Webfont: Lato-Regular */
+@font-face {
+    font-family: 'LatoWeb';
+    src: url('fonts/Lato-Regular.eot'); /* IE9 Compat Modes */
+    src: url('fonts/Lato-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('fonts/Lato-Regular.woff2') format('woff2'), /* Modern Browsers */
+         url('fonts/Lato-Regular.woff') format('woff'), /* Modern Browsers */
+         url('fonts/Lato-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+/* Webfont: Lato-Semibold */
+@font-face {
+    font-family: 'LatoWebSemibold';
+    src: url('fonts/Lato-Semibold.eot'); /* IE9 Compat Modes */
+    src: url('fonts/Lato-Semibold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('fonts/Lato-Semibold.woff2') format('woff2'), /* Modern Browsers */
+         url('fonts/Lato-Semibold.woff') format('woff'), /* Modern Browsers */
+         url('fonts/Lato-Semibold.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, .navbar {font-family: 'LatoWebSemibold';}
+body {
+  background-color: #23787D;
+  color: #171717;
+  font-family: 'LatoWeb';
+}
+button {border: none;  padding: 15px 25px; text-align: center; font-size: 16px; cursor: pointer;}
+button:hover {background-color: #fff; color: #808080;}
+
+/* 2 - Index page */
+.jumbotron {margin: 1.5em auto;}
+.container {
+  background-color: #c0d6d3; /* #47878c */
+  margin: 1.5em auto;
+  max-width: 95vw;
+  padding: 20px;
+  /* border: 2px inset black; */
+  border-radius: 15px;
+}
+.button-container {margin: auto; text-align: center;}
+.btn, .clickado, .logout {text-align: center; margin-top: 30px; padding: 15px 25px; font-size: 16px; cursor: pointer; border: none;}
+.btn:hover, .clickado:hover, .logout:hover {background-color: #fff; color: #808080;}
+.clickado {background-color: #4CAF50; color: white;}
+.logout {background-color: #e04e4e; color: white;}
+
+
+.alert {margin: 1em auto;}
+
+@media screen and (min-width: 1200px){
+  .jumbotron, .container, .alert {max-width: 50vw;}
+}

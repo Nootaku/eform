@@ -1,0 +1,126 @@
+{% extends "headers.html" %}
+{% block body %}
+
+<div class="container">
+  <form action="pdf" method="POST">
+    <legend>Player Information</legend>
+    <div class="row">
+      <div class="col">
+
+        <!-- Player Name -->
+
+        <div class="form-group row1">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Player name" value="Robert">
+        </div>
+      </div>
+      <div class="col">
+
+        <!-- Date of Birth -->
+
+        <div class="form-group row1">
+          <label for="dateOfBirth">Born on</label>
+          <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" placeholder="Player's date of birth">
+        </div>
+      </div>
+      <div class="col">
+
+        <!-- Passport Number -->
+
+        <div class="form-group row1">
+          <label for="passport">Passport Number</label>
+          <input type="text" class="form-control" id="passport" name="passport" placeholder="Player's passport number" value="12345">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+
+        <!-- Contract start date -->
+
+        <div class="form-group row2">
+          <label for="startDate">Contract start date</label>
+          <input type="date" class="form-control" id="startDate" name="startDate">
+        </div>
+      </div>
+      <div class="col">
+
+        <!-- Contract end date -->
+
+        <div class="form-group row2">
+          <label for="endDate">Contract end date</label>
+          <input type="date" class="form-control" id="endDate" name="endDate">
+        </div>
+      </div>
+      <div class="col">
+
+        <!-- Contract country -->
+
+        <div class="form-group row2">
+          <label for="country">Country of contract</label>
+          <input type="text" class="form-control" id="country" name="country" placeholder="Country where the contract should be negociated" value="Belgium">
+        </div>
+
+        <!-- Exclusivity -->
+
+        <div class="form-group form-check row3">
+          <input type="checkbox" class="form-check-input" id="exclusive" name="exclusive" checked>
+          <label class="form-check-label" for="exclusive">Exclusive to the country of contract</label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+
+        <!-- Remunaration of the intermediary -->
+
+        <div class="form-group row4">
+          <label for="remunaration">Intermediary remunaration</label>
+          <input type="number" class="form-control" id="remunaration" name="remunaration" placeholder="Percentage of remuneration" value="10">
+        </div>
+      </div>
+      <div class="col">
+
+        <!-- Lump of money -->
+
+        <div class="form-group form-check row5">
+          <input type="checkbox" class="form-check-input" id="lump" name="lump">
+          <label class="form-check-label" for="lump">Lump sum payment</label>
+        </div>
+
+        <!-- Paid by Football Club ? -->
+
+        <div class="form-group form-check row5">
+          <input type="checkbox" class="form-check-input" id="byClub" name="byClub">
+          <label class="form-check-label" for="byClub">Paid by Football Club</label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+
+        <!-- Signed in -->
+
+        <div class="form-group row1">
+          <label for="signCity">Signed in</label>
+          <input type="text" class="form-control" id="signCity" name="signCity" placeholder="City of signature" value="Brussels">
+        </div>
+      </div>
+      <div class="col">
+
+        <!-- Signed on -->
+
+        <div class="form-group row1">
+          <label for="date">Signed on</label>
+          <input type="date" class="form-control" id="date" name="date">
+        </div>
+      </div>
+    </div>
+    <div class="button-container">
+      <button type="submit" class="clickado">Submit</button>
+      <button class="logout" onclick="window.location.href = '/login';">Log Out</button>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
