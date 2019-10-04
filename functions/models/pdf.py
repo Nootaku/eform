@@ -1,13 +1,17 @@
-# from fpdf import FPDF
-from fpdf import FPDF, HTMLMixin
-import os
 import datetime
-from db.temporary_db import companies
+
+# PDF Creation module
+from fpdf import FPDF, HTMLMixin
+
+# PROJECT FUNCTIONS
 from functions.models.replace import replaceInString as ris
-from functions.models.contract import contract
+from functions.models.contract import intermediary, player, contract
 
 
-def generatePdf(user, form_values):
+# First, let's connect to the database:
+def generatePdf(
+    database, company, user, form_values, destination
+):
     """Generates a PDF document. Uses the Logged in user name in order to get
     the company data.
 
@@ -48,6 +52,8 @@ def generatePdf(user, form_values):
     """
     # Define variables:
     # ----------------------
+    intermediary_paragraph = intermediary(company)
+    player_paragraph = player(form_values)
     exclusivity = "non-exclusive."
     lump = None
     byClub = None
@@ -79,14 +85,6 @@ def generatePdf(user, form_values):
             print(str(ex))
 
     replacements = [
-        ["${company}$", companies[user]["name"]],  # 0
-        ["${vat_nr}$", companies[user]["vat_nr"]],
-        ["${address_st}$", companies[user]["address"][0]],
-        ["${address_city}$", companies[user]["address"][1]],
-        ["${address_country}$", companies[user]["address"][2]],
-        ["${country}$", companies[user]["agent_country"]],  # 5
-        ["${agent_nr}$", companies[user]["agent_nr"]],
-        ["${agent_name}$", companies[user]["agent_name"]],
         ["${player_name}$", form_values[0]],
         ["${date_of_birth}$", dates[0]],
         ["${passport}$", form_values[2]],  # 10
@@ -102,13 +100,6 @@ def generatePdf(user, form_values):
         ["\u2018", "'"],
         ["\u2019", "'"]
     ]
-
-    intermediary = os.path.join(
-        os.getcwd(), "functions", "models", "intermediary"
-    )
-    player = os.path.join(
-        os.getcwd(), "functions", "models", "player"
-    )
 
     class MyFPDF(FPDF, HTMLMixin):
         def header(self):
@@ -141,16 +132,9 @@ def generatePdf(user, form_values):
 
         def user_paragraph(self, paragraph, aka=""):
             self.set_font('Arial', size=11)
-            html = ""
-            with open(paragraph, 'r') as file:
-                html += str(file.read())
-            for i in replacements:
-                if html is not None:
-                    html = ris(html, i[0], i[1])
 
-            if html is not None:
-                self.write_html(html)
-                self.ln(8)
+            self.write_html(paragraph)
+            self.ln(8)
 
             if aka != "":
                 self.set_font('Arial', 'I', size=11)
@@ -206,7 +190,7 @@ def generatePdf(user, form_values):
     pdf.create_header('INTERMEDIARY')
 
     # Intermediary
-    pdf.user_paragraph(intermediary, "Indermediary")
+    pdf.user_paragraph(intermediary_paragraph, "Indermediary")
 
     # And
     pdf.set_font('Arial', 'B', size=12)
@@ -216,7 +200,7 @@ def generatePdf(user, form_values):
     pdf.create_header('PLAYER')
 
     # Player
-    pdf.user_paragraph(player, "Player")
+    pdf.user_paragraph(player_paragraph, "Player")
     pdf.set_font('Arial', size=11)
     pdf.cell(
         0, h=5,
@@ -228,4 +212,4 @@ def generatePdf(user, form_values):
     # Contract
     pdf.write_contract()
 
-    pdf.output('contrat.pdf', 'F')
+    pdf.output(destination, 'F')

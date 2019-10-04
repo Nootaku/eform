@@ -1,4 +1,45 @@
+def intermediary(company):
+    """Creates an HTML string with info related to the given company.
+
+    Attributes:
+            - company: SQLAlchemy Query Response object
+
+    Output:
+            - string: STR() containing html tags to be used with
+                    the fpdf.write_html() function.
+    """
+    string = str(
+        "<p><B><I>{0}</B></I>, registered in {1} under the VAT number {2} " +
+        "and having its registered office located [<I>{3} - {4}, {1}$</I>] " +
+        "and registered intermediary at the {5} Football Federation under " +
+        "n° {6}, represented by <B>{7}</B>, Director,</p>"
+    ).format(
+        company.name, company.country, company.vat_nr, company.street,
+        company.city, company.agent_country, company.agent_nr,
+        company.agent_name
+    )
+    return string
+
+
+def player(form):
+    """Creates an HTML string with info related to the given form values.
+
+    Attributes:
+            - form: LIST[with form values]
+
+    Output:
+            - string: STR() containing html tags to be used with
+                    the fpdf.write_html() function.
+    """
+    string = str(
+        "<p><B><I>{0}</B></I>, born on {1}, in possession of passport " +
+        "number {2},</p>"
+    ).format(form[0], form[1], form[2])
+    return string
+
+
 contract = {
+    "1. Contract Period":
     "h1": "1. Contract Period",
     "p1": str(
         "This contract shall enter into force on the ${start_date}$, and be " +

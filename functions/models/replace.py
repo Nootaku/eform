@@ -25,8 +25,6 @@ def replaceInString(p, f, r):
             return p
 
     else:
-        print("HEEEEEEERREEEEEE")
-        print(p)
         new_p = p.replace(f, "")
         if new_p != "":
             return new_p
