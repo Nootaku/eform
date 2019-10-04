@@ -11,7 +11,7 @@
 
         <div class="form-group row1">
           <label for="name">Name</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="Player name" value="Robert">
+          <input type="text" class="form-control" id="name" name="name" placeholder="Player name">
         </div>
       </div>
       <div class="col">
@@ -28,8 +28,8 @@
         <!-- Passport Number -->
 
         <div class="form-group row1">
-          <label for="passport">Passport Number</label>
-          <input type="text" class="form-control" id="passport" name="passport" placeholder="Player's passport number" value="12345">
+          <label for="passport">Passport</label>
+          <input type="text" class="form-control" id="passport" name="passport" placeholder="Player's passport number">
         </div>
       </div>
     </div>
@@ -58,7 +58,7 @@
 
         <div class="form-group row2">
           <label for="country">Country of contract</label>
-          <input type="text" class="form-control" id="country" name="country" placeholder="Country where the contract should be negociated" value="Belgium">
+          <input type="text" class="form-control" id="country" name="country" placeholder="Country where the contract should be negociated">
         </div>
 
         <!-- Exclusivity -->
@@ -76,7 +76,7 @@
 
         <div class="form-group row4">
           <label for="remunaration">Intermediary remunaration</label>
-          <input type="number" class="form-control" id="remunaration" name="remunaration" placeholder="Percentage of remuneration" value="10">
+          <input type="number" class="form-control" id="remunaration" name="remunaration" placeholder="Percentage of remuneration" min="0" max="99" value="10">
         </div>
       </div>
       <div class="col">
@@ -118,7 +118,7 @@
     </div>
     <div class="button-container">
       <button type="submit" class="clickado">Submit</button>
-      <button class="logout" onclick="window.location.href = '/login';">Log Out</button>
+      <button type="button" class="logout" onclick="window.location.href = '/logout';">Log Out</button>
     </div>
   </form>
 </div>
