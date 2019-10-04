@@ -1,4 +1,5 @@
 import os
+import datetime
 # VANILA FLASK
 from flask import Flask, render_template, redirect, flash, request
 
@@ -10,8 +11,8 @@ from flask_login import login_user, logout_user, login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
 
 # PROJECT FUNCTIONS
-from functions.models.pdf import generatePdf
-from functions.models.save import getDownloadPath
+from functions.pdf import generatePdf
+from functions.save import getDownloadPath
 from db.encryption import encryptPsw
 
 
@@ -80,25 +81,26 @@ def home():
 def createPdf():
     user_id = current_user.id
     company = Company.query.filter_by(user_id=user_id).first()
+    dob = str(datetime.datetime.strptime(
+        request.form['dateOfBirth'], "%Y-%m-%d").strftime('%d/%m/%Y'))
+    start = str(datetime.datetime.strptime(
+        request.form['startDate'], "%Y-%m-%d").strftime('%d/%m/%Y'))
+    end = str(datetime.datetime.strptime(
+        request.form['endDate'], "%Y-%m-%d").strftime('%d/%m/%Y'))
+    sign_date = str(datetime.datetime.strptime(
+        request.form['date'], "%Y-%m-%d").strftime('%d/%m/%Y'))
+
     values = [
-        request.form['name'],  # 0
-        request.form['dateOfBirth'],  # 1
-        request.form['passport'],  # 2
-        request.form['startDate'],  # 3
-        request.form['endDate'],  # 4
-        request.form['country'],  # 5
-        request.form.get('exclusive'),  # 6
-        request.form['remunaration'],  # 7
-        request.form.get('lump'),  # 8
-        request.form.get('byClub'),  # 9
-        request.form['signCity'],  # 10
-        request.form['date']  # 11
+        request.form['name'], dob, request.form['passport'], start, end,
+        request.form['country'], request.form.get('exclusive'),
+        request.form['remunaration'], request.form.get('lump'),
+        request.form.get('byClub'), request.form['signCity'], sign_date
     ]
     dest_path = getDownloadPath()
-    generatePdf(db, company, current_user.username, values, dest_path)
-    flash(str(
+    generatePdf(company, values, dest_path)
+    flash(
         "The document has been created and saved in your Downloads folder."
-    ))
+    )
     return redirect('/')
 
 
