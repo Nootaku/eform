@@ -10,7 +10,7 @@ def intermediary(company):
     """
     string = str(
         "<p><B><I>{0}</B></I>, registered in {1} under the VAT number {2} " +
-        "and having its registered office located [<I>{3} - {4}, {1}$</I>] " +
+        "and having its registered office located [<I>{3} - {4}, {1}</I>] " +
         "and registered intermediary at the {5} Football Federation under " +
         "n° {6}, represented by <B>{7}</B>, Director,</p>"
     ).format(
