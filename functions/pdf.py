@@ -29,11 +29,6 @@ def generatePdf(company, form_values, destination):
 
     Output:
             - success: Boolean determining if the PDF has been generated.
-
-    Extra information:
-        self.set_draw_color(0, 80, 180)
-        self.set_fill_color(230, 230, 0)
-        self.set_text_color(220, 50, 50)
     """
     # Define variables:
     # ----------------------

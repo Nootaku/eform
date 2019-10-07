@@ -20,16 +20,3 @@ def encryptPsw(password):
     hash = middle.hexdigest()
 
     return hash
-
-
-def dectyptPsw(hash):
-    """Takes a hashed string and decodes it to a readable password.
-
-    Arguments:
-            - hash: a string containing a hashed password
-
-    Output:
-            - password: a sting containing a readable password
-    """
-    # Not needed at the moment of writing
-    pass
