@@ -15,4 +15,4 @@ Click on the 'Submit' button to generate a pdf file in your Downloads folder.
 Click 'Log out' to end your session.
 
 ## Example output
-![alt text](static/files/contract_2019_10_07.pdf "Example output")
+![Example output](static/files/contract_2019_10_07.pdf "Example output")
